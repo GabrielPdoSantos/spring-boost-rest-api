@@ -77,6 +77,18 @@ public class TarefaController {
             summary = "Atualização tarefa",
             description="Atualização das tarefas"
     )
+    @ApiResponse(
+            responseCode = "200",
+            description = "A tarefa foi atualizada com sucesso"
+    )
+    @ApiResponse(
+            responseCode = "400",
+            description = "Dados fornecidos são inválidos"
+    )
+    @ApiResponse(
+            responseCode = "404",
+            description = "O id não existe"
+    )
     @PutMapping("/{id}")
     public ResponseEntity<TarefaResponseDTO> atualizarTarefa(
             @PathVariable Long id,
@@ -94,6 +106,14 @@ public class TarefaController {
     @Operation(
             summary = "Excluir tarefa",
             description="Exclusão de tarefas"
+    )
+    @ApiResponse(
+            responseCode = "204",
+            description = "Tarefa deletada com sucesso"
+    )
+    @ApiResponse(
+            responseCode = "404",
+            description = "Dados fornecidos são inválidos"
     )
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarTarefa(@PathVariable Long id, ServletRequest servletRequest){
